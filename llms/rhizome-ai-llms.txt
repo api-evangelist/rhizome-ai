@@ -1,0 +1,13 @@
+# Rhizome AI
+
+## Docs
+
+- [Get Document Contents](https://docs.rhizomeai.com/api-reference/contents.md): Retrieve all pages of a document by document ID
+- [Search](https://docs.rhizomeai.com/api-reference/search.md): Search regulatory documents by keyword with page-level results
+- [Authentication](https://docs.rhizomeai.com/authentication.md): How to authenticate with the Rhizome API
+- [Introduction](https://docs.rhizomeai.com/introduction.md): Search and retrieve regulatory & clinical documents via API
+- [Rate Limits](https://docs.rhizomeai.com/rate-limits.md): API rate limits and best practices
+
+## OpenAPI Specs
+
+- [openapi](https://docs.rhizomeai.com/api-reference/openapi.json)

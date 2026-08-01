@@ -1,0 +1,7 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: rhizome-ai-search-and-retrieve.md
+  name: Search and retrieve regulatory documents
+  api: openapi/rhizome-ai-openapi.yml
+  operations: [searchDocuments, getDocumentContents]

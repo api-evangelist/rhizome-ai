@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rhizomeai.com/api-reference/search
+format: http-status
+notes: >-
+  Errors are surfaced as HTTP status codes with a plain-text/JSON message; the
+  docs do not document an RFC 9457 application/problem+json envelope. Derived
+  from the documented per-endpoint error tables and enriched from the docs.
+problems:
+- status: 400
+  title: Invalid request body
+  remediation: Ensure required fields are present and typed correctly (query_text for search, doc_id for contents).
+  operations:
+  - openapi/rhizome-ai-openapi.yml#searchDocuments
+  - openapi/rhizome-ai-openapi.yml#getDocumentContents
+- status: 401
+  title: Missing or invalid API key
+  remediation: Send a valid key in the x-api-key header. Create one at https://rhizomeai.com/api-keys (enterprise plan required).
+  operations:
+  - openapi/rhizome-ai-openapi.yml#searchDocuments
+  - openapi/rhizome-ai-openapi.yml#getDocumentContents
+- status: 404
+  title: Document not found
+  remediation: Verify the doc_id returned from a search result before requesting contents.
+  operations:
+  - openapi/rhizome-ai-openapi.yml#getDocumentContents
+- status: 429
+  title: Rate limit exceeded
+  remediation: Back off exponentially; limit is 50 requests/minute per API key.
+  operations:
+  - openapi/rhizome-ai-openapi.yml#searchDocuments
+  - openapi/rhizome-ai-openapi.yml#getDocumentContents
+- status: 500
+  title: Internal server error
+  remediation: Retry with backoff; contact support@rhizomeai.com if it persists.
+  operations:
+  - openapi/rhizome-ai-openapi.yml#searchDocuments
+  - openapi/rhizome-ai-openapi.yml#getDocumentContents

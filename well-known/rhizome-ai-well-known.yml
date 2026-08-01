@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+host: https://rhizomeai.com
+documents:
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: rhizome-ai-oauth-authorization-server.json
+  notes: >-
+    RFC 8414 OAuth 2.0 Authorization Server Metadata. Served via Clerk
+    (issuer https://clerk.rhizomeai.com) for the web application's user
+    login/OAuth. The documented data API uses x-api-key, not this OAuth server.
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+other_hosts:
+- host: https://docs.rhizomeai.com
+  checked: [security.txt, openid-configuration, oauth-authorization-server, api-catalog, ai-plugin.json]
+  result: all 404

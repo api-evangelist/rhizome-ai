@@ -1,0 +1,14 @@
+{
+  "provider": "rhizome-ai",
+  "sources": [
+    "rhizome-ai-documents-api-openapi.yml"
+  ],
+  "outputs": [
+    "rhizome-ai-documents-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

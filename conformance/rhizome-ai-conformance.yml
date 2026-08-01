@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/rhizome-ai-openapi.yml
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: API described with an OpenAPI 3.1.0 document (generated from published docs).
+- id: apikey-auth
+  conforms: true
+  evidence: securityScheme type apiKey in header (x-api-key).
+- id: oauth2
+  conforms: false
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors returned as HTTP status codes; no application/problem+json envelope documented.
+- id: pagination
+  conforms: true
+  evidence: offset-based pagination via top_k/offset with total/total_pages counts.
+- id: idempotency
+  conforms: false
+notes: >-
+  Derived assertions about cross-cutting standards. Rhizome AI publishes no
+  formal compliance program (SOC 2 / ISO 27001 / HIPAA) on its public surface,
+  so no Compliance pointer is emitted.

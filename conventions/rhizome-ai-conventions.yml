@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rhizomeai.com
+authentication:
+  style: api-key
+  header: x-api-key
+  ref: authentication/rhizome-ai-authentication.yml
+pagination:
+  style: offset
+  params:
+    limit: top_k
+    offset: offset
+  defaults:
+    search: {top_k: 20, offset: 0}
+    contents: {top_k: 10, offset: 0}
+  bounds: {top_k_min: 1, top_k_max: 100, offset_min: 0}
+  response_fields:
+    search: total
+    contents: total_pages
+idempotency:
+  supported: false
+  notes: No idempotency key is documented. Search and contents are POST read operations without side effects.
+versioning:
+  scheme: none-documented
+  notes: The API is versioned as 1.0.0 in docs; no URL/header version selector is documented.
+error_envelope:
+  style: http-status
+  ref: errors/rhizome-ai-problem-types.yml
+rate_limit_signaling:
+  documented_headers: false
+  limit: 50-per-minute
+  ref: rate-limits/rhizome-ai-rate-limits.yml
+request_response:
+  content_type: application/json
+  transport: HTTPS POST
+notes: >-
+  Cross-cutting semantics for the Rhizome AI API. Both endpoints are JSON POST
+  requests. Filtering on search is via dataset_to_search, year_from, and
+  year_to. No documented idempotency contract, so no Idempotency pointer is
+  emitted.

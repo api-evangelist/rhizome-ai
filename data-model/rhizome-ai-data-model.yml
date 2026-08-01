@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/rhizome-ai-openapi.yml
+entities:
+- name: Document
+  description: A regulatory or clinical document from a health-authority dataset.
+  key: doc_id
+  fields: [doc_id, dataset, name, url, company, year_decision, total_pages]
+- name: DocumentPage
+  description: A single page of a document's full text.
+  key: page_num
+  fields: [page_num, text]
+- name: SearchResult
+  description: A page-level hit returned by search, ranked by BM25 score.
+  key: id
+  fields: [id, doc_id, dataset, page_num, score, name, url, company, year_decision, text, highlight]
+relationships:
+- from: Document
+  to: DocumentPage
+  type: has_many
+  via: pages
+- from: SearchResult
+  to: Document
+  type: belongs_to
+  via: doc_id
+- from: SearchResult
+  to: DocumentPage
+  type: belongs_to
+  via: page_num
+notes: >-
+  A Document is identified by doc_id and belongs to a dataset (e.g. fda_drug).
+  Search returns page-level SearchResult objects that reference their parent
+  document via doc_id; contents returns the Document with its DocumentPage list.

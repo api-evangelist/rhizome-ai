@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: Rhizome AI API
+  description: >-
+    Search and retrieve regulatory and clinical documents via API. The Rhizome
+    AI API exposes keyword search (BM25 ranking) over regulatory document
+    corpora from health authorities (FDA, EMA, Health Canada, Swissmedic, MHRA,
+    TGA, and others) and full-text page-by-page document retrieval. API access
+    requires an enterprise plan.
+  version: 1.0.0
+  contact:
+    name: Rhizome AI Support
+    email: support@rhizomeai.com
+    url: https://rhizomeai.com
+  x-apievangelist-generated: '2026-07-21'
+  x-apievangelist-method: generated
+  x-apievangelist-source: https://docs.rhizomeai.com
+servers:
+  - url: https://rhizomeai.com/api
+    description: Production
+security:
+  - apiKeyAuth: []
+tags:
+  - name: Documents
+    description: Search and retrieve regulatory and clinical documents.
+paths:
+  /search:
+    post:
+      operationId: searchDocuments
+      summary: Search documents
+      description: >-
+        Search across regulatory documents with keyword matching (BM25 ranking)
+        and get page-level results ordered by relevance score.
+      tags:
+        - Documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+            example:
+              query_text: FDA approval process
+      responses:
+        '200':
+          description: Search results ordered by relevance.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Invalid request body.
+        '401':
+          description: Missing or invalid API key.
+        '429':
+          description: Rate limit exceeded (50 requests/minute).
+        '500':
+          description: Internal server error.
+  /contents:
+    post:
+      operationId: getDocumentContents
+      summary: Get document contents
+      description: Retrieve the full text of any document, page by page, by document ID.
+      tags:
+        - Documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentsRequest'
+            example:
+              doc_id: nda/2017/208264Orig1s000ChemR.pdf
+      responses:
+        '200':
+          description: Document contents by page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentsResponse'
+        '400':
+          description: Invalid request body.
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Document not found.
+        '429':
+          description: Rate limit exceeded (50 requests/minute).
+        '500':
+          description: Internal server error.
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: >-
+        API key authentication. Create a key at https://rhizomeai.com/api-keys
+        and send it in the x-api-key header. API access requires an enterprise
+        plan.
+  schemas:
+    SearchRequest:
+      type: object
+      required:
+        - query_text
+      properties:
+        query_text:
+          type: string
+          description: The search query text. Searches document content using BM25 ranking.
+        top_k:
+          type: integer
+          description: Maximum results returned.
+          default: 20
+          minimum: 1
+          maximum: 100
+        offset:
+          type: integer
+          description: Results to skip for pagination.
+          default: 0
+          minimum: 0
+        dataset_to_search:
+          type: array
+          items:
+            type: string
+          description: Filter by specific datasets; an empty array searches all available datasets.
+        year_from:
+          type: integer
+          description: Filter results from this year onwards (inclusive).
+        year_to:
+          type: integer
+          description: Filter results through this year (inclusive).
+    SearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Search results ordered by relevance score.
+          items:
+            $ref: '#/components/schemas/SearchResult'
+        total:
+          type: integer
+          description: Total matching results, for pagination.
+    SearchResult:
+      type: object
+      properties:
+        id:
+          type: string
+        doc_id:
+          type: string
+        dataset:
+          type: string
+        page_num:
+          type: integer
+        score:
+          type: number
+        name:
+          type: string
+        url:
+          type: string
+        company:
+          type: string
+        year_decision:
+          type: integer
+        text:
+          type: string
+        highlight:
+          type: string
+    ContentsRequest:
+      type: object
+      required:
+        - doc_id
+      properties:
+        doc_id:
+          type: string
+          description: Document identifier from search results (e.g., file path or FDA URL).
+        top_k:
+          type: integer
+          description: Maximum number of pages to return.
+          default: 10
+          minimum: 1
+          maximum: 100
+        offset:
+          type: integer
+          description: Number of pages to skip for pagination.
+          default: 0
+          minimum: 0
+    ContentsResponse:
+      type: object
+      properties:
+        doc_id:
+          type: string
+        dataset:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        company:
+          type: string
+        year_decision:
+          type: integer
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentPage'
+        total_pages:
+          type: integer
+          description: Total page count for pagination.
+    DocumentPage:
+      type: object
+      properties:
+        page_num:
+          type: integer
+          description: Zero-indexed page number.
+        text:
+          type: string

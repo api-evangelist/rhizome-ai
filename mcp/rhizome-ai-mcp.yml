@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/rhizome-ai-openapi.yml
+server:
+  name: rhizome-ai
+  transport: http
+  auth: {type: apiKey, header: x-api-key}
+tools:
+- name: search_documents
+  description: Search regulatory and clinical documents by keyword (BM25) with page-level results.
+  source_operation: openapi/rhizome-ai-openapi.yml#searchDocuments
+- name: get_document_contents
+  description: Retrieve the full text of a document, page by page, by document ID.
+  source_operation: openapi/rhizome-ai-openapi.yml#getDocumentContents
+notes: >-
+  No official hosted/remote MCP server was found for Rhizome AI. This is a
+  candidate tool list derived from the two documented API operations.

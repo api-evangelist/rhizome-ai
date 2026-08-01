@@ -1,8 +1,30 @@
 aid: rhizome-ai
 name: Rhizome Ai
-description: Rhizome Ai is a company surfaced as a portfolio company of y-combinator and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Rhizome AI is an AI-powered regulatory research platform for pharmaceutical
+  and medical device companies. It lets regulatory affairs teams ask questions
+  and receive cited answers grounded in primary-source documents from health
+  authorities worldwide (FDA, EMA, Health Canada, Swissmedic, MHRA, TGA and
+  others across 10+ agencies), retrieving from up to a thousand documents
+  without hallucinating. Beyond the web application, Rhizome AI publishes an
+  enterprise HTTP API that exposes BM25 keyword search across the regulatory
+  document corpus and full-text, page-by-page document retrieval, authenticated
+  with an x-api-key header. A YC-backed company, Rhizome AI was surfaced as a
+  portfolio-company lead and enriched from its public developer documentation.
 url: https://raw.githubusercontent.com/api-evangelist/rhizome-ai/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://rhizomeai.com/favicon.ico
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,12 +33,103 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Regulatory
+- Pharmaceutical
+- Medical Devices
+- Life Sciences
+- Document Search
+- Artificial Intelligence
+- Compliance
+apis:
+- aid: rhizome-ai:rhizome-ai-documents-api
+  name: Rhizome Ai Documents API
+  description: Search and retrieve regulatory and clinical documents.
+  humanURL: https://docs.rhizomeai.com
+  baseURL: https://rhizomeai.com/api
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/rhizome-ai-documents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rhizomeai.com
+  - type: APIReference
+    url: https://docs.rhizomeai.com/api-reference/search
+  - type: GettingStarted
+    url: https://docs.rhizomeai.com/introduction
+  - type: Authentication
+    url: authentication/rhizome-ai-authentication.yml
+  - type: LLMsTxt
+    url: llms/rhizome-ai-llms.txt
+  - type: RateLimits
+    url: rate-limits/rhizome-ai-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/rhizome-ai-problem-types.yml
+  - type: Conventions
+    url: conventions/rhizome-ai-conventions.yml
+  - type: Conformance
+    url: conformance/rhizome-ai-conformance.yml
+  - type: DataModel
+    url: data-model/rhizome-ai-data-model.yml
+common:
+- type: DomainSecurity
+  url: security/rhizome-ai-domain-security.yml
+- type: WellKnown
+  url: well-known/rhizome-ai-well-known.yml
+- type: MCPServer
+  url: mcp/rhizome-ai-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: ErrorCatalog
+  url: errors/rhizome-ai-problem-types.yml
+- type: Conventions
+  url: conventions/rhizome-ai-conventions.yml
+- type: Conformance
+  url: conformance/rhizome-ai-conformance.yml
+- type: DataModel
+  url: data-model/rhizome-ai-data-model.yml
+- type: Overlay
+  url: overlays/rhizome-ai-openapi-overlay.yaml
+- type: OpenAPI
+  url: openapi/rhizome-ai-openapi.yml
+- type: DeveloperPortal
+  url: https://docs.rhizomeai.com
+- type: Documentation
+  url: https://docs.rhizomeai.com
+- type: APIReference
+  url: https://docs.rhizomeai.com/api-reference/search
+- type: GettingStarted
+  url: https://docs.rhizomeai.com/introduction
+- type: Authentication
+  url: authentication/rhizome-ai-authentication.yml
+- type: RateLimits
+  url: rate-limits/rhizome-ai-rate-limits.yml
+- type: LLMsTxt
+  url: llms/rhizome-ai-llms.txt
+- type: Support
+  url: mailto:support@rhizomeai.com
+- type: Pricing
+  url: https://rhizomeai.com
+- type: SignUp
+  url: https://rhizomeai.com/sign-up
+- type: Login
+  url: https://rhizomeai.com/sign-in
+- type: TermsOfService
+  url: https://rhizomeai.com/termsofservice
+- type: PrivacyPolicy
+  url: https://rhizomeai.com/privacypolicy
+- type: Website
+  url: https://rhizomeai.com
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1

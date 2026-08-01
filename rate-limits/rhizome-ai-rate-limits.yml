@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rhizomeai.com/rate-limits
+rate_limits:
+- scope: per-api-key
+  limit_count: 50
+  window: minute
+  description: Maximum 50 requests per minute per API key.
+response:
+  status_on_exceed: 429
+  message: 'Rate limit exceeded. Maximum 50 requests per minute.'
+best_practices:
+- Exponential backoff on 429 (1, 2, 4, 8, 16 seconds).
+- Batch work into fewer larger requests using higher top_k values (max 100).
+- Cache responses locally to avoid redundant identical queries.
+notes: >-
+  Only a per-minute request limit is documented; no hourly or daily limits are
+  published. For higher limits, contact support@rhizomeai.com. No dedicated
+  rate-limit response headers are documented.

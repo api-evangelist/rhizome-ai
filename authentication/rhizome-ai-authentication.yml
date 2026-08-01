@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/rhizome-ai-openapi.yml
+docs: https://docs.rhizomeai.com/authentication
+notes: >-
+  Single API-key scheme. Send the key in the x-api-key header on every request.
+  Create keys at https://rhizomeai.com/api-keys (shown once). API access
+  requires an enterprise plan. No test/live key distinction is documented.
+  Store keys in environment variables; never expose them in browser JavaScript.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: API key authentication. Create a key at https://rhizomeai.com/api-keys and send
+    it in the x-api-key header. API access requires an enterprise plan.
+  sources:
+  - openapi/rhizome-ai-openapi.yml

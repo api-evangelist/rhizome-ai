@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Rhizome AI API
+  version: 1.0.0
+extends: openapi/rhizome-ai-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 3
+    x-apievangelist-notes: >-
+      OpenAPI generated from Rhizome AI's published developer documentation
+      (docs.rhizomeai.com); the vendor's own openapi.json was a Mintlify
+      placeholder and was not used.
+- target: $.info
+  update:
+    x-agent-ready: true
+    x-rate-limit: 50-requests-per-minute
