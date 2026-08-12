@@ -94,7 +94,7 @@ common:
 - type: Overlay
   url: overlays/rhizome-ai-openapi-overlay.yaml
 - type: OpenAPI
-  url: openapi/rhizome-ai-openapi.yml
+  url: openapi/_original/rhizome-ai-openapi.yml
 - type: DeveloperPortal
   url: https://docs.rhizomeai.com
 - type: Documentation
