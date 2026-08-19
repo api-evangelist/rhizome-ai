@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rhizome AI Documents API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://rhizomeai.com/api/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search across regulatory documents with keyword matching (BM25 ranking) and get page-level results ordered by relevance score."
+        },
+        {
+          "info": {
+            "name": "Get document contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://rhizomeai.com/api/contents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the full text of any document, page by page, by document ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
