@@ -1,0 +1,31 @@
+# Front Door AI Index — rhizome-ai — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: rhizome-ai
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: rhizomeai.com
+  final_host: rhizomeai.com
+  ownership: own
+  owner: rhizome-ai
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 9
+  host_score: 9
+  density: 2.86
+  words: 3149
+  tiers:
+    agentic: 3
+    core: 4
+    model: 2
+  ambiguous: 10
+  top_terms:
+    agent: 7
+    AI: 4
+    intelligence: 3
+    prompts: 2
+    ChatGPT: 1
+    Claude: 1
+    copilot: 1
