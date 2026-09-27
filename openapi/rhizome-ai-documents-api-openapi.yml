@@ -108,28 +108,6 @@ components:
           type: string
         highlight:
           type: string
-    ContentsResponse:
-      type: object
-      properties:
-        doc_id:
-          type: string
-        dataset:
-          type: string
-        name:
-          type: string
-        url:
-          type: string
-        company:
-          type: string
-        year_decision:
-          type: integer
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentPage'
-        total_pages:
-          type: integer
-          description: Total page count for pagination.
     SearchRequest:
       type: object
       required:
@@ -160,14 +138,6 @@ components:
         year_to:
           type: integer
           description: Filter results through this year (inclusive).
-    DocumentPage:
-      type: object
-      properties:
-        page_num:
-          type: integer
-          description: Zero-indexed page number.
-        text:
-          type: string
     SearchResponse:
       type: object
       properties:
@@ -198,6 +168,36 @@ components:
           description: Number of pages to skip for pagination.
           default: 0
           minimum: 0
+    DocumentPage:
+      type: object
+      properties:
+        page_num:
+          type: integer
+          description: Zero-indexed page number.
+        text:
+          type: string
+    ContentsResponse:
+      type: object
+      properties:
+        doc_id:
+          type: string
+        dataset:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        company:
+          type: string
+        year_decision:
+          type: integer
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentPage'
+        total_pages:
+          type: integer
+          description: Total page count for pagination.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
