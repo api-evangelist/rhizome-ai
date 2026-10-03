@@ -83,30 +83,13 @@ paths:
           description: Internal server error.
 components:
   schemas:
-    SearchResult:
+    DocumentPage:
       type: object
       properties:
-        id:
-          type: string
-        doc_id:
-          type: string
-        dataset:
-          type: string
         page_num:
           type: integer
-        score:
-          type: number
-        name:
-          type: string
-        url:
-          type: string
-        company:
-          type: string
-        year_decision:
-          type: integer
+          description: Zero-indexed page number.
         text:
-          type: string
-        highlight:
           type: string
     SearchRequest:
       type: object
@@ -168,14 +151,6 @@ components:
           description: Number of pages to skip for pagination.
           default: 0
           minimum: 0
-    DocumentPage:
-      type: object
-      properties:
-        page_num:
-          type: integer
-          description: Zero-indexed page number.
-        text:
-          type: string
     ContentsResponse:
       type: object
       properties:
@@ -198,6 +173,31 @@ components:
         total_pages:
           type: integer
           description: Total page count for pagination.
+    SearchResult:
+      type: object
+      properties:
+        id:
+          type: string
+        doc_id:
+          type: string
+        dataset:
+          type: string
+        page_num:
+          type: integer
+        score:
+          type: number
+        name:
+          type: string
+        url:
+          type: string
+        company:
+          type: string
+        year_decision:
+          type: integer
+        text:
+          type: string
+        highlight:
+          type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey
