@@ -83,14 +83,6 @@ paths:
           description: Internal server error.
 components:
   schemas:
-    DocumentPage:
-      type: object
-      properties:
-        page_num:
-          type: integer
-          description: Zero-indexed page number.
-        text:
-          type: string
     SearchRequest:
       type: object
       required:
@@ -121,17 +113,6 @@ components:
         year_to:
           type: integer
           description: Filter results through this year (inclusive).
-    SearchResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          description: Search results ordered by relevance score.
-          items:
-            $ref: '#/components/schemas/SearchResult'
-        total:
-          type: integer
-          description: Total matching results, for pagination.
     ContentsRequest:
       type: object
       required:
@@ -173,6 +154,25 @@ components:
         total_pages:
           type: integer
           description: Total page count for pagination.
+    SearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Search results ordered by relevance score.
+          items:
+            $ref: '#/components/schemas/SearchResult'
+        total:
+          type: integer
+          description: Total matching results, for pagination.
+    DocumentPage:
+      type: object
+      properties:
+        page_num:
+          type: integer
+          description: Zero-indexed page number.
+        text:
+          type: string
     SearchResult:
       type: object
       properties:
