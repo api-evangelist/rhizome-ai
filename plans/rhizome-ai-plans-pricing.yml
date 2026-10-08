@@ -1,0 +1,53 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://rhizomeai.com
+sources:
+- https://rhizomeai.com
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: true
+note: Marketing homepage with a pricing section; five tiers from free to custom enterprise.
+plan_count: 5
+currency: USD
+plans:
+- name: Free
+  price_text: $0
+  price: 0
+  currency: USD
+  period: month
+  included_quota: 10 messages/month across FDA, EMA, and other English HAs
+- name: Project
+  price_text: $400 /mo
+  price: 400
+  currency: USD
+  period: month
+  included_quota: Unlimited usage, upgraded agent, 2x faster response times
+- name: Professional
+  price_text: $4,000 /yr
+  price: 4000
+  currency: USD
+  period: year
+  unit: seat
+  included_quota: Everything in project with 2 months free
+- name: Business
+  price_text: $30,000 /yr
+  price: 30000
+  currency: USD
+  period: year
+  included_quota: 5 seats with monthly office hours, invoice-based pricing, SSO, custom security requirements,
+    and more
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Adds all non-english HAs - South Korea, Japan, China, Argentina, etc.
+rate_limit_statements:
+- 10 messages/month across FDA, EMA, and other English HAs
