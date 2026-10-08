@@ -51,3 +51,49 @@ plans:
   included_quota: Adds all non-english HAs - South Korea, Japan, China, Argentina, etc.
 rate_limit_statements:
 - 10 messages/month across FDA, EMA, and other English HAs
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - seat
+  - subscription
+  units:
+  - seat
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Project
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Professional
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - year
+  - name: Business
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
