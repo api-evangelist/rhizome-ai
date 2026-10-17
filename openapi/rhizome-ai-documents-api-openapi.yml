@@ -113,25 +113,6 @@ components:
         year_to:
           type: integer
           description: Filter results through this year (inclusive).
-    ContentsRequest:
-      type: object
-      required:
-      - doc_id
-      properties:
-        doc_id:
-          type: string
-          description: Document identifier from search results (e.g., file path or FDA URL).
-        top_k:
-          type: integer
-          description: Maximum number of pages to return.
-          default: 10
-          minimum: 1
-          maximum: 100
-        offset:
-          type: integer
-          description: Number of pages to skip for pagination.
-          default: 0
-          minimum: 0
     ContentsResponse:
       type: object
       properties:
@@ -154,17 +135,6 @@ components:
         total_pages:
           type: integer
           description: Total page count for pagination.
-    SearchResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          description: Search results ordered by relevance score.
-          items:
-            $ref: '#/components/schemas/SearchResult'
-        total:
-          type: integer
-          description: Total matching results, for pagination.
     DocumentPage:
       type: object
       properties:
@@ -198,6 +168,36 @@ components:
           type: string
         highlight:
           type: string
+    SearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Search results ordered by relevance score.
+          items:
+            $ref: '#/components/schemas/SearchResult'
+        total:
+          type: integer
+          description: Total matching results, for pagination.
+    ContentsRequest:
+      type: object
+      required:
+      - doc_id
+      properties:
+        doc_id:
+          type: string
+          description: Document identifier from search results (e.g., file path or FDA URL).
+        top_k:
+          type: integer
+          description: Maximum number of pages to return.
+          default: 10
+          minimum: 1
+          maximum: 100
+        offset:
+          type: integer
+          description: Number of pages to skip for pagination.
+          default: 0
+          minimum: 0
   securitySchemes:
     apiKeyAuth:
       type: apiKey
